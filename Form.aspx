@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Form.aspx.cs" Inherits="Form" %>
+﻿<%@ Page language="C#" AutoEventWireup="true" CodeBehind="Form.aspx.cs" Inherits="Form" %>
 
 <!DOCTYPE html>
 
@@ -21,7 +21,7 @@
 <body>
 
     <div class="container">
-        <div style="background-color: cadetblue; margin:10px; padding:10px;">
+        <div style="background-color: cadetblue; margin: 10px; padding: 10px;">
             <h1 class="display-4 text-center">Registration Form</h1>
         </div>
         <form id="form1" runat="server">
@@ -36,111 +36,113 @@
                     </div>
                     <div class="form-check">
                         <input type="radio" class="form-check-input title" id="radio2" name="optradio" value="Front End Developer" />
-                            <label class="form-check-label" for="radio2">Front End Developer</label>
-                        </div>
-                        <div class="form-check">
-                            <input type="radio" class="form-check-input title" id="radio3" name="optradio" value="Back End Developer" />
-                            <label class="form-check-label" for="radio3">Back End Developer</label>
-                        </div>
-                        <div class="form-check">
-                            <input type="radio" class="form-check-input title" id="radio4" name="optradio" value="Database Analyst" />
-                            <label class="form-check-label" for="radio4">Database Analyst</label>
-                        </div>
+                        <label class="form-check-label" for="radio2">Front End Developer</label>
                     </div>
-                    <%-- name --%>
-                    <div class="form-group">
-                        <input type="text" id="fname" class="fname col-sm-5" placeholder="First name" /><span style="color: red;">*</span>
-                        <input type="text" id="lname" class="lname col-sm-5" placeholder="Last name" /><span style="color: red;">*</span>
+                    <div class="form-check">
+                        <input type="radio" class="form-check-input title" id="radio3" name="optradio" value="Back End Developer" />
+                        <label class="form-check-label" for="radio3">Back End Developer</label>
                     </div>
-                    <%-- dropdown --%>
-                    <div class="form-group">
-                        <select class="dposition col-sm-10" runat="server" name="dposition" id="dposition">
-                            <option selected="selected" disabled="disabled" value="">Select a position</option>
-                        </select><span style="color: red;">*</span><br />
-                        <br />
-                        <input type="text" id="tposition" class="tposition col-sm-10" placeholder="Position" readonly="readonly" />
-                    </div>
-
-                    <div class="form-group">
-                        <input type="text" class="arena col-sm-10" id="arena" placeholder="Business Arena" /><span style="color: red;">*</span>
-                    </div>
-                    <%-- check --%>
-                    <div class="form-group col-sm-3">
-                        <div class="form-check">
-                            <input type="checkbox" class="form-check-input employee" id="check1" name="optcheck" value="Employee" />
-                            <label class="form-check-label" for="check1">Employee</label>
-                        </div>
-                        <div class="form-check">
-                            <input type="checkbox" class="form-check-input employee" id="check2" name="optcheck" value="Employer" />
-                            <label class="form-check-label" for="check2">Employer</label>
-                        </div>
-                        <div class="form-check">
-                            <input type="checkbox" class="form-check-input employee" id="check3" name="optcheck" value="Admin" />
-                            <label class="form-check-label" for="check3">Admin</label>
-                        </div>
-                        <div class="form-check">
-                            <input type="checkbox" class="form-check-input employee" id="check4" name="optcheck" value="Developer" />
-                            <label class="form-check-label" for="check4">Developer</label>
-                        </div>
-                        <div class="form-check">
-                            <input type="checkbox" class="form-check-input employee" id="check5" name="optcheck" value="Advisor" />
-                            <label class="form-check-label" for="check5">Advisor</label>
-                        </div>
-                        <div class="form-check">
-                            <input type="checkbox" class="form-check-input employee" id="check6" name="optcheck" value="Trainer" />
-                            <label class="form-check-label" for="check6">Trainer</label>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <select id="skill" class="skill-multiple col-sm-10 skill" multiple="true" name="skill" runat="server">
-                        </select><span style="color: red;">*</span>
+                    <div class="form-check">
+                        <input type="radio" class="form-check-input title" id="radio4" name="optradio" value="Database Analyst" />
+                        <label class="form-check-label" for="radio4">Database Analyst</label>
                     </div>
                 </div>
-                <%-- Contact info div --%>
-                <div class="coninfo col-sm-6" style="float: right; color: white; background-color: #0384fc">
-                    <h4>Contact Information</h4>
-                    <div class="form-group">
-                        <input type="text" class="street col-sm-10" id="street" placeholder="Street + Nr" /><br />
+                <%-- name --%>
+                <div class="form-group">
+                    <input type="text" id="fname" class="fname col-sm-5" placeholder="First name" /><span style="color: red;">*</span>
+                    <input type="text" id="lname" class="lname col-sm-5" placeholder="Last name" /><span style="color: red;">*</span>
+                </div>
+                <%-- dropdown --%>
+                <div class="form-group">
+                    <select class="dposition col-sm-10" runat="server" name="dposition" id="dposition">
+                        <option selected="selected" disabled="disabled" value="">Select a position</option>
+                    </select><span style="color: red;">*</span><br />
+                    <br />
+                    <input type="text" id="tposition" class="tposition col-sm-10" placeholder="Position" readonly="readonly" />
+                </div>
 
+                <div class="form-group">
+                    <input type="text" class="arena col-sm-10" id="arena" placeholder="Business Arena" /><span style="color: red;">*</span>
+                </div>
+                <%-- check --%>
+                <div class="form-group col-sm-3">
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input employee" id="check1" name="optcheck" value="Employee" />
+                        <label class="form-check-label" for="check1">Employee</label>
                     </div>
-                    <div class="form-group">
-                        <label for="date" class="col-sm-3">Date of Birth</label>
-                        <input type="datetime-local" id="date" class="col-sm-6 date" />
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input employee" id="check2" name="optcheck" value="Employer" />
+                        <label class="form-check-label" for="check2">Employer</label>
                     </div>
-                    <div class="form-group">
-                        <input type="text" id="zipcode" maxlength="6" class="zipcode col-sm-2" placeholder="Zipcode" />
-                        <select class="place col-sm-8" id="place"  runat="server" name="place">
-                            <option selected="selected" disabled="disabled" value="">Place</option>
-                        </select>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input employee" id="check3" name="optcheck" value="Admin" />
+                        <label class="form-check-label" for="check3">Admin</label>
                     </div>
-                    <div class="form-group">
-                        <select class="country col-sm-10" id="country"  runat="server" name="country">
-                            <option selected="selected" disabled="disabled" value="">Country</option>
-                        </select>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input employee" id="check4" name="optcheck" value="Developer" />
+                        <label class="form-check-label" for="check4">Developer</label>
                     </div>
-                    <div class="form-group">
-                        <input type="text" class="code col-sm-2" id="code"  runat="server" name="code" placeholder="Code +" readonly="readonly" />
-                        <input type="tel" id="contact" class="contact col-sm-8" maxlength="10" placeholder="e.g. +1 702 123 4567" />
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input employee" id="check5" name="optcheck" value="Advisor" />
+                        <label class="form-check-label" for="check5">Advisor</label>
                     </div>
-
-                    <div class="form-group">
-                        <input type="email" id="email" class="email col-sm-10" placeholder="Enter Your Email..." />
-                    </div>
-
-                    <div class="form-group">
-                        <input type="checkbox" id="terms" class="terms" />
-                        <p class="col-sm-8">I do accept the Terms and Conditions of your site</p>
-                    </div>
-                    <div class="form-group">
-                        <button type="submit" id="submit" class="btn btn-success" disabled="disabled" runat="server">Submit</button>
-
-                        <button type="button" id="update" class="btn btn-warning" disabled="disabled" style="display: none" runat="server">Update</button>
-
-                        <button type="reset" id="reset" class="btn btn-danger">Reset</button><br /><br />
-
-                        <button type="button" id="stats" class="btn btn-secondary" runat="server">View Stats</button><br /><br />
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input employee" id="check6" name="optcheck" value="Trainer" />
+                        <label class="form-check-label" for="check6">Trainer</label>
                     </div>
                 </div>
+                <div class="form-group">
+                    <select id="skill" class="skill-multiple col-sm-10 skill" multiple="true" name="skill" runat="server">
+                    </select><span style="color: red;">*</span>
+                </div>
+            </div>
+            <%-- Contact info div --%>
+            <div class="coninfo col-sm-6" style="float: right; color: white; background-color: #0384fc">
+                <h4>Contact Information</h4>
+                <div class="form-group">
+                    <input type="text" class="street col-sm-10" id="street" placeholder="Street + Nr" /><br />
+
+                </div>
+                <div class="form-group">
+                    <label for="date" class="col-sm-3">Date of Birth</label>
+                    <input type="datetime-local" id="date" class="col-sm-6 date" />
+                </div>
+                <div class="form-group">
+                    <input type="text" id="zipcode" maxlength="6" class="zipcode col-sm-2" placeholder="Zipcode" />
+                    <select class="place col-sm-8" id="place" runat="server" name="place">
+                        <option selected="selected" disabled="disabled" value="">Place</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <select class="country col-sm-10" id="country" runat="server" name="country">
+                        <option selected="selected" disabled="disabled" value="">Country</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="code col-sm-2" id="code" runat="server" name="code" placeholder="Code +" readonly="readonly" />
+                    <input type="tel" id="contact" class="contact col-sm-8" maxlength="10" placeholder="e.g. +1 702 123 4567" />
+                </div>
+
+                <div class="form-group">
+                    <input type="email" id="email" class="email col-sm-10" placeholder="Enter Your Email..." />
+                </div>
+
+                <div class="form-group">
+                    <input type="checkbox" id="terms" class="terms" />
+                    <p class="col-sm-8">I do accept the Terms and Conditions of your site</p>
+                </div>
+                <div class="form-group">
+                    <button type="submit" id="submit" class="btn btn-success" disabled="disabled" runat="server">Submit</button>
+
+                    <button type="button" id="update" class="btn btn-warning" disabled="disabled" style="display: none" runat="server">Update</button>
+
+                    <button type="reset" id="reset" class="btn btn-danger">Reset</button><br />
+                    <br />
+
+                    <button type="button" id="stats" class="btn btn-secondary" runat="server">View Stats</button><br />
+                    <br />
+                </div>
+            </div>
         </form>
     </div>
     <%-- jquery cdn --%>
