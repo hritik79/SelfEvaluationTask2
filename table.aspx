@@ -90,7 +90,7 @@
                     <th>Business Arena</th>
                     <th>Employee</th>
                     <th>Skill</th>
-                    <th>Add</th>
+                   <%-- <th>Add</th>--%>
                     <th>Edit</th>
                     <th>Delete</th>
                 </tr>
@@ -441,12 +441,12 @@
                             { data: 'arena' },
                             { data: 'employee_type' },
                             { data: 'skill' },
-                            {
+                            /*{
                                 data: null,
                                 render: function (data, type, full, meta) {
                                     return "<i class='fa-solid fa-plus add' data-toggle='modal' data-backdrop='static' data-target='#myModal1' style='color: #000000;'></i>";
                                 }
-                            },
+                            },*/
                             {
                                 data: null,
                                 render: function (data, type, full, meta) {

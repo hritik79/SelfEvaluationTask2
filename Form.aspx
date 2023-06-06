@@ -408,8 +408,6 @@
             }
             var formattedDateTime = parts[0] + "T" + hours.toString().padStart(2, '0') + ":" + minutes.toString().padStart(2, '0');
 
-            console.log(formattedDateTime);
-
             $("#date").val(formattedDateTime);
             $("#zipcode").val(editData.zipcode);
             $("#country").val(editData.country_id);

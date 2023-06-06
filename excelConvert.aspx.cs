@@ -22,7 +22,7 @@ public partial class excelConvert : System.Web.UI.Page
         MySqlConnection con = new MySqlConnection(MyConnection);
         DataSet ds = new DataSet();
 
-        string query = "CALL get_empdata();";
+        string query = "SELECT personal.first_name, personal.last_name, personal.date_of_birth, personal.title, personal.employee_type, \r\npositions.position_name, contact.contact, contact.email, contact.codes, address.street_name, address.zipcode, place.place, country.country,\r\n    GROUP_CONCAT(DISTINCT skills.skills) as skills\r\n\tFROM personal\r\n\tLEFT JOIN positions ON personal.position_id = positions.position_id\r\n\tJOIN contact ON personal.pid = contact.pid\r\n\tJOIN address ON personal.pid = address.pid\r\n\tJOIN place ON address.place_id = place.place_id\r\n\tJOIN country ON address.country_id = country.country_id\r\n\tJOIN skilldetail ON personal.pid = skilldetail.pid\r\n\tJOIN skills ON skilldetail.skill_id = skills.skill_id\r\n    WHERE is_deleted = 0\r\n    GROUP BY personal.pid, personal.position_id, contact.cid, address.street_name, address.zipcode, place.place, country.country;";
         con.Open();
         MySqlDataAdapter adapter = new MySqlDataAdapter(query, con);
         adapter.Fill(ds);
