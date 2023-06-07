@@ -210,8 +210,112 @@ public partial class Form : System.Web.UI.Page
             connection.Close();
         }
     }
-
     [WebMethod]
+    public static void UpdateDataToDatabase(string pid, string title, string fname, string lname, string position, string arena, string emp_type, string skill, string street, string date, string zipcode, string place, string country, string code, string contact, string email)
+    {
+        string MyConnection = "server=127.0.0.1;username=root;password=hritik@79;database=empdata;";
+        using (MySqlConnection connection = new MySqlConnection(MyConnection))
+        {
+            connection.Open();
+            string query1 = "UPDATE empdata.personal p\r\nINNER JOIN empdata.contact c ON c.pid = p.pid\r\nINNER JOIN empdata.address a ON a.pid = p.pid\r\nSET p.first_name = '" + fname
+                + "', p.last_name = '" + lname
+                + "', p.date_of_birth = '" + date
+                + "', p.title ='" + title
+                + "', p.employee_type ='" + emp_type
+                + "', p.position_id = '" + position
+                + "', p.arena = '" + arena
+                + "', c.contact = '" + contact
+                + "', c.email= '" + email
+                + "', c.codes = '" + code
+                + "', a.street_name= '" + street
+                + "', a.zipcode= '" + zipcode
+                + "', a.place_id = '" + place
+                + "', a.country_id = '" + country
+                + "' WHERE p.pid = '" + pid + "';";
+            using (MySqlCommand cmnd = new MySqlCommand(query1, connection))
+            {
+                cmnd.ExecuteNonQuery();
+            }
+
+            string query2 = "DELETE FROM empdata.skilldetail WHERE pid = '" + pid + "';";
+            using (MySqlCommand cmnd = new MySqlCommand(query2, connection))
+            {
+                cmnd.ExecuteNonQuery();
+            }
+
+            string[] skills = skill.Split(',');
+            foreach (string skillValue in skills)
+            {
+                string query3 = "INSERT INTO empdata.skilldetail(pid,skill_id) VALUES('" + pid + "','" + skillValue + "');";
+
+                using (MySqlCommand cmnd = new MySqlCommand(query3, connection))
+                {
+                    cmnd.ExecuteNonQuery();
+                }
+            }
+
+        }
+    }
+
+    /*[WebMethod]
+    public static void UpdateDataToDatabase(string pid, string title, string fname, string lname, string position, string arena, string emp_type, string skill, string street, string date, string zipcode, string place, string country, string code, string contact, string email)
+    {
+        string MyConnection = "server=127.0.0.1;username=root;password=hritik@79;database=empdata;";
+        using (MySqlConnection connection = new MySqlConnection(MyConnection))
+        {
+            connection.Open();
+            string query1 = "UPDATE empdata.personal SET first_name = '" + fname
+                + "', last_name = '" + lname
+                + "', date_of_birth = '" + date
+                + "', title ='" + title
+                + "', employee_type ='" + emp_type
+                + "', position_id = '" + position
+                + "', arena = '" + arena
+                + "' WHERE pid = '" + pid + "';";
+            using (MySqlCommand cmnd = new MySqlCommand(query1, connection))
+            {
+                cmnd.ExecuteNonQuery();
+            }
+
+            string query2 = "UPDATE empdata.contact SET contact= '" + contact
+                + "', email= '" + email
+                + "', codes = '" + code
+                + "' WHERE pid = '" + pid + "';";
+            using (MySqlCommand cmnd = new MySqlCommand(query2, connection))
+            {
+                cmnd.ExecuteNonQuery();
+            }
+
+            string query3 = "UPDATE empdata.address SET street_name= '" + street
+                + "', zipcode= '" + zipcode
+                + "', place_id = '" + place
+                + "', country_id = '" + country
+                + "' WHERE pid = '" + pid + "';";
+            using (MySqlCommand cmnd = new MySqlCommand(query3, connection))
+            {
+                cmnd.ExecuteNonQuery();
+            }
+
+            string query4 = "DELETE FROM empdata.skilldetail WHERE pid = '" + pid + "';";
+            using (MySqlCommand cmnd = new MySqlCommand(query4, connection))
+            {
+                cmnd.ExecuteNonQuery();
+            }
+
+            string[] skills = skill.Split(',');
+            foreach (string skillValue in skills)
+            {
+                string query5 = "INSERT INTO empdata.skilldetail(pid,skill_id) VALUES('" + pid + "','" + skillValue + "');";
+
+                using (MySqlCommand cmnd = new MySqlCommand(query5, connection))
+                {
+                    cmnd.ExecuteNonQuery();
+                }
+            }
+
+        }
+    }*/
+    /*[WebMethod]
     public static void UpdateDataToDataBase(string pid, string title, string fname, string lname, string position, string arena, string emp_type, string skill, string street, string date, string zipcode, string place, string country, string code, string contact, string email)
     {
         string MyConnection = "server=127.0.0.1;username=root;password=hritik@79;database=empdata;";
@@ -262,6 +366,6 @@ public partial class Form : System.Web.UI.Page
             }
             connection.Close();
         }
-    }
+    }*/
 }
 

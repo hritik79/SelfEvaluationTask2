@@ -164,3 +164,116 @@ END $$
 DELIMITER ;
 
 CALL get_empdata();
+
+SELECT personal.*, positions.position_name, contact.*, address.street_name, address.zipcode, place.place, country.country, country.country_id
+	FROM personal
+	LEFT JOIN positions ON personal.position_id = positions.position_id
+	JOIN contact ON personal.pid = contact.pid
+	JOIN address ON personal.pid = address.pid
+	JOIN place ON address.place_id = place.place_id
+	JOIN country ON address.country_id = country.country_id
+    WHERE is_deleted = 0;
+    
+    SELECT personal.*, positions.position_name, contact.*, address.street_name, address.zipcode, place.place, country.country, skills.skills, skills.skill_id, country.country_id
+	FROM personal
+	LEFT JOIN positions ON personal.position_id = positions.position_id
+	JOIN contact ON personal.pid = contact.pid
+	JOIN address ON personal.pid = address.pid
+	JOIN place ON address.place_id = place.place_id
+	JOIN country ON address.country_id = country.country_id
+	JOIN skilldetail ON personal.pid = skilldetail.pid
+	JOIN skills ON skilldetail.skill_id = skills.skill_id
+    WHERE is_deleted = 0;
+    
+SELECT personal.first_name, personal.last_name, personal.date_of_birth, personal.title, personal.employee_type, 
+positions.position_name, contact.contact, contact.email, contact.codes, address.street_name, address.zipcode, place.place, country.country,
+    GROUP_CONCAT(DISTINCT skills.skills) as skills
+	FROM personal
+	LEFT JOIN positions ON personal.position_id = positions.position_id
+	JOIN contact ON personal.pid = contact.pid
+	JOIN address ON personal.pid = address.pid
+	JOIN place ON address.place_id = place.place_id
+	JOIN country ON address.country_id = country.country_id
+	JOIN skilldetail ON personal.pid = skilldetail.pid
+	JOIN skills ON skilldetail.skill_id = skills.skill_id
+    WHERE is_deleted = 0
+    GROUP BY personal.pid, personal.position_id, contact.cid, address.street_name, address.zipcode, place.place, country.country;
+    
+UPDATE empdata.personal 
+SET first_name = 'Govardhan', 
+	last_name = 'ks', 
+	date_of_birth = '2001-11-08T02:04', 
+	title ='Back End Developer', 
+	employee_type ='Employer,Advisor', 
+	position_id = '4', 
+	arena = 'will think about it' 
+WHERE pid = '7';
+UPDATE empdata.contact 
+SET contact= '5874126589', 
+	email= 'sdsd79@gmail.com', 
+	codes = '+971' 
+WHERE pid = '7';
+UPDATE empdata.address 
+SET street_name= 'Parrys street', 
+	zipcode= '441912', 
+    place_id = '7', 
+    country_id = '3' 
+WHERE pid = '7';
+
+-- updating 3 table using single query
+UPDATE empdata.personal p, empdata.contact c, empdata.address a
+SET p.first_name = 'Govardhan', 
+	p.last_name = 'Govi', 
+	p.date_of_birth = '2001-11-08T02:04', 
+	p.title ='Back End Developer', 
+	p.employee_type ='Employer,Advisor', 
+	p.position_id = '4', 
+	p.arena = 'will think about!!!!',
+    c.contact= '7708411025', 
+	c.email= 'govi79@gmail.com', 
+	c.codes = '+971',
+    a.street_name= 'Parrys st', 
+	a.zipcode= '441912', 
+    a.place_id = '7', 
+    a.country_id = '3'
+WHERE p.pid = '7' AND c.pid = '7' AND a.pid = '7';
+
+-- updating 3 tables using join
+UPDATE empdata.personal p
+INNER JOIN empdata.contact c ON c.pid = p.pid
+INNER JOIN empdata.address a ON a.pid = p.pid
+SET p.first_name = 'Chaynesh', 
+	p.last_name = 'Rathore', 
+	p.date_of_birth = '2001-11-08T02:04', 
+	p.title ='Back End Developer', 
+	p.employee_type ='Employer,Advisor', 
+	p.position_id = '4', 
+	p.arena = 'will think about it!!!!',
+    c.contact= '7708411025', 
+	c.email= 'chay79@gmail.com', 
+	c.codes = '+971',
+    a.street_name= 'Parrys st', 
+	a.zipcode= '441912', 
+    a.place_id = '7', 
+    a.country_id = '3'
+WHERE p.pid = '7';
+
+-- update 3 table and delete 1 table detail and insert new values
+UPDATE empdata.personal p
+INNER JOIN empdata.contact c ON c.pid = p.pid
+INNER JOIN empdata.address a ON a.pid = p.pid
+SET p.first_name = 'Chaynesh', 
+	p.last_name = 'Rathore', 
+	p.date_of_birth = '2001-11-08T02:04', 
+	p.title ='Back End Developer', 
+	p.employee_type ='Employer,Advisor', 
+	p.position_id = '4', 
+	p.arena = 'will think about it!!!!',
+    c.contact= '7708411025', 
+	c.email= 'chay79@gmail.com', 
+	c.codes = '+971',
+    a.street_name= 'Parrys st', 
+	a.zipcode= '441912', 
+    a.place_id = '7', 
+    a.country_id = '3'
+WHERE p.pid = '7';
